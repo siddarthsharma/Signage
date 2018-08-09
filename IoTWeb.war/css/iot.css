@@ -1,0 +1,93 @@
+
+body {
+	margin:0px;
+	padding: 0px;
+	font-family: texgyreherosregular, Arial, Helvetica, sans-serif;
+	color: grey;
+	background-size: cover;
+	background-repeat: no-repeat;
+	font-size: 100%;
+}
+
+input[type="email"], input[type="text"], input[type="password"], select{
+	height: 35px;
+	width: 100%;
+    border: 1px solid #D7DBDD;
+    font-size: 1em;
+}
+
+.button {
+    padding: 8px 20px 12px 20px;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    font-size: 1em;
+}
+
+.button-normal {
+    background: #4A7EAF;
+    color: #FFFFFF;
+}
+
+
+div#container {
+	margin-top:75px;
+}
+
+div#main-content {
+	margin: 0px auto;
+    border: 1px solid #D7DBDD;
+    width: 32%;
+    background-color: #FFFFFF;
+}
+
+div#header {
+    background-color: #4A7EAF;
+    color: #FFFFFF;
+    width: 100%;
+}
+
+p#header-main {
+    width: 100%;
+    font-size: 1.25em;
+    padding: 20px 10px;
+    margin: 0px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+p.center{
+	text-align: center;
+}
+
+div#label {
+	padding-bottom: 5px;
+    font-weight: bold;
+    color: #848484;
+}
+
+
+div#message {
+	margin: 10px;
+	color:red;
+	font-weight: bold;
+	text-align: center;
+}
+
+
+table{
+	width:100%;
+}
+
+
+
+div#print{
+	margin: auto;
+}
+
+div#print-btn{ 
+	width:100%; 
+	padding-bottom: 20px;
+	text-align: center;
+}

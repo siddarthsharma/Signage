@@ -1,0 +1,88 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	      version="3.0">
+	      
+    <display-name>GAVS IoT</display-name>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	
+	 <!-- <context-param>
+    	<param-name>resteasy.providers</param-name>
+    	<param-value>
+    		com.gavs.iot.filters.JacksonConfig,
+    		com.gavs.iot.filters.CORSResponseFilter,
+    		com.gavs.iot.exception.ReaderExceptionMapper,
+	    	com.gavs.iot.exception.JsonParseExceptionMapper,
+	    	com.gavs.iot.exception.JsonMappingExceptionMapper,
+	    	com.gavs.iot.exception.NotAllowedExceptionMapper,
+	    	com.gavs.iot.exception.NotFoundExceptionMapper
+    	</param-value>
+	</context-param> -->
+	
+	<!-- <filter>
+	    <filter-name>CleanupFilter</filter-name>
+	    <filter-class>com.gavs.iot.filters.ResteasyCleanupFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>CleanupFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>DBFilter</filter-name>
+		<filter-class>com.gavs.iot.filters.DBFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>DBFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>-->
+	
+	<!-- RESTeasy Configuration START -->
+     <listener>
+        <listener-class>
+            org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
+        </listener-class>
+    </listener> 
+    
+    <!-- APPLICATION START -->
+     <servlet>
+        <servlet-name>GAVSIoT</servlet-name>
+        <servlet-class>
+            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+        </servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>com.gavs.iot.application.APIService</param-value>
+        </init-param>
+	    <init-param>
+	        <param-name>resteasy.servlet.mapping.prefix</param-name>
+	        <param-value>/api</param-value>
+	    </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GAVSIoT</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping> 
+   
+	<!-- APPLICATION END -->
+	
+ 	<!-- Account Activation Servlet V2 -->
+     <!-- <servlet>
+        <servlet-name>AccountActivationServlet</servlet-name>
+        <servlet-class>com.gavs.iot.servlet.AccountActivationServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>AccountActivationServlet</servlet-name>
+        <url-pattern>/activate</url-pattern>
+    </servlet-mapping>  -->
+</web-app>

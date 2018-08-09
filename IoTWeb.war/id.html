@@ -1,0 +1,64 @@
+
+<html>
+<meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+<style>
+</style>
+<link href="css/iot.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="page_signUp">
+	<div id="container">
+		<form>
+			<div id="main-content">
+				<div id="header">
+					<p id="header-main">CARD PRINTING</p>
+				</div>
+				<div id="message"></div>
+				<div id="content">
+					<table style="border-spacing: 10px;">
+						<tr>
+							<td>
+								<input id="firstName" name="firstname" type="text" value="" size="30" placeholder="Firstname"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input id="lastName" name="lastname" type="text" value="" size="30" placeholder="Lastname"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div id="label"><span style="font-size: .75em; font-weight: bold;">Choose a photo:</span></div>
+								<input type="file" name="file" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input id="type" name="type" type="radio" value="Employee" checked="checked"/>Employee
+								<input id="type" name="type" type="radio" value="Guest"/>Guest
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input id="employeeid" name="employeeid" type="text" value="" size="30" placeholder="Employee Number"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input id="bloodgrp" name="bloodgrp" type="text" value="" size="30" placeholder="Blood Group"/>
+							</td>
+						</tr>
+					</table><br>
+					<div id="print">
+						<div id="print-btn">
+							 <input type="submit" value="Print" class="button button-normal"/>
+						</div>
+					</div>		
+					
+				</div>
+				
+			</div>
+		</form>
+	</div>
+</body>
+</html>

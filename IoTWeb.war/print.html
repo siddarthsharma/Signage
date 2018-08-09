@@ -1,0 +1,88 @@
+
+<html>
+<meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="mobile-web-app-capable" content="yes">
+<head>
+<style>
+</style>
+<link href="css/iot.css" rel="stylesheet" type="text/css" />
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("input:radio[name='type']").on('click',function () {
+	    if (this.checked && this.value == "Employee") {
+	        $("#row-id").show();
+	        $("#row-grp").show();
+	    } else {
+	        $("#row-id").hide();
+	        $("#row-grp").hide();
+	    }
+	});
+	
+});
+</script>
+</head>
+<%
+String cardType = ConstantsInterface.CARD_TYPE_EMPLOYEE;
+if(request.getParameter("type") != null)
+	cardType = request.getParameter("type");
+%>
+<body style="margin:0px; padding: 0px; font-family: texgyreherosregular, Arial, Helvetica, sans-serif; color: grey; background-size: cover; background-repeat: no-repeat; font-size: 100%;">
+	<img src="/images/idcard/templates/header.png" />
+	<div style="margin-top:10px;">
+		<form action="api/print/card" method="post" enctype="multipart/form-data">
+			<div style="margin: 0px auto;border: 1px solid #D7DBDD;background-color: #FFFFFF;">
+				<div style="background-color: #4A7EAF;color: #FFFFFF;width: 100%;">
+					<p style="width: 100%;font-size: 1.25em;padding: 20px 10px;margin: 0px;box-sizing: border-box;text-align: center;">CARD PRINTING</p>
+				</div>
+				<div style="margin: 10px;color:red;font-weight: bold;text-align: center;"></div>
+				<div id="content">
+					<table style="border-spacing: 10px;width:100%;">
+						<tr>
+							<td>
+								<input id="firstName" name="firstname" type="text" value="" size="30" autocomplete="off" placeholder="Firstname" style="height: 35px; border: 1px solid #D7DBDD; font-size: 1em;"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input id="lastName" name="lastname" type="text" value="" size="30" autocomplete="off" placeholder="Lastname" style="height: 35px; border: 1px solid #D7DBDD; font-size: 1em;"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div style="padding-bottom: 5px;font-weight: bold;color: #848484;">
+									<span style="font-size: 12px; font-weight: bold; font-style: italic;">
+										Take a photo or select one that's available<br/>(GIF, JPEG, PNG)
+									</span>
+								</div>
+								<input type="file" name="file" accept="image/*" capture="capture" size="30"/>
+							</td>
+						</tr>
+						<%if(cardType.equalsIgnoreCase(ConstantsInterface.CARD_TYPE_EMPLOYEE)){%>
+							<tr id="row-id">
+								<td>
+									<input id="employeeid" name="employeeid" type="text" value="" size="30" autocomplete="off" placeholder="Employee Number" style="height: 35px; border: 1px solid #D7DBDD; font-size: 1em;"/>
+								</td>
+							</tr>
+							<tr id="row-grp">
+								<td>
+									<input id="bloodgrp" name="bloodgrp" type="text" value="" size="30" autocomplete="off" placeholder="Blood Group" style="height: 35px; border: 1px solid #D7DBDD; font-size: 1em;"/>
+								</td>
+							</tr>
+						<%}%>	
+					</table><br>
+					<input type="hidden" id="type" name="type" value="<%=cardType%>" />
+					<div style="margin: auto;">
+						<div style="width:100%;padding-bottom: 20px;text-align: center;">
+							 <input type="submit" value="Print" style="padding: 8px 20px 12px 20px;border: 0 none;cursor: pointer; -webkit-border-radius: 20px;border-radius: 20px;font-size: 1em;background: #4A7EAF;color: #FFFFFF;"/>
+						</div>
+					</div>		
+					
+				</div>
+				
+			</div>
+		</form>
+	</div>
+</body>
+<script>document.documentElement.requestFullscreen();</script>
+</html>
